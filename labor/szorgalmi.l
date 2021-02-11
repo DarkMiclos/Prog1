@@ -1,0 +1,19 @@
+%{
+#include <stdio.h>
+int msh = 0;
+int mgh = 0;
+%}
+
+%%
+[aeiouAEIOU] {mgh++;}
+[a-zA-Z] {msh++;}
+%%
+int main()
+{
+	printf("A program megszamolja a msh-kat es a mgh-kat.\n");
+	printf("Adj meg karaktereket:");
+	yylex();
+	printf("Mgh-k szama: %d\n", mgh);
+	printf("Msh-k szama: %d\n", msh);
+	return 0;
+}
