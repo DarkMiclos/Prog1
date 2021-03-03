@@ -1,0 +1,41 @@
+/*
+    g++ main.cpp Graph.cpp Window.cpp GUI.cpp Simple_window.cpp -o main `fltk-config --ldflags --use-images`
+*/
+#include "Simple_window.h"
+#include "Graph.h"
+
+double one(double)
+{
+	return 1;
+}
+
+double  square(double x) {return x*x;}
+
+int main()
+{
+	using namespace Graph_lib;
+	Point tl {100,100};
+	Simple_window win {tl, 600, 400, "My window"};
+	//Exercise 1
+	Rectangle r { Point{50,50}, 100, 50};
+	Polygon p;
+	p.add( {200, 50} );
+	p.add( {300, 50} );
+	p.add( {300, 100} );
+	p.add( {200, 100} );
+	p.set_color(Color::red);
+	r.set_color(Color::blue);
+	win.attach(r);
+	win.attach(p);
+	//Exercise 2
+	Rectangle r2 { {50, 150}, 100, 30};
+	Text t { {75,165}, "Howdy!"};
+	win.attach(r2);
+	win.attach(t);
+	//Exercise 3
+	Text l { {200,150}, "L"}
+	l.set_color(Color::red);
+	l.set_font_size(20);
+	win.wait_for_button();
+
+}
